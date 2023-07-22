@@ -1,12 +1,11 @@
-import { isDisabled } from '@testing-library/user-event/dist/utils';
-import React from 'react'
 
-function handlecheck(){
-  console.log("counter"+isDisabled());
-    isDisabled()?true:false;
-}
+import React, { useState } from 'react'
+
+
+  
 function Cards({title,description}) {
-
+  const [buttondiasabled,setDisabled]=useState(false);
+  
   return (
          <div class="col mb-5">
             <div class="card h-100">
@@ -20,12 +19,16 @@ function Cards({title,description}) {
                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                     <div class="text-center">
                       <button type='button' class="btn btn-outline-dark mt-auto" 
-                      onClick={handlecheck()}>Add to Cart</button></div>
+                      onClick={handlecheck} disabled={buttondiasabled} >Add to Cart</button></div>
                 </div>
             </div>
             </div>
     
   );
+  function handlecheck(){
+    //console.log("counter"+isDisabled());
+    setDisabled(true);
+  }
 }
 
 export default Cards
